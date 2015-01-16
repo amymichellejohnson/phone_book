@@ -1,23 +1,21 @@
+<h1>Welcome to your Phonebook!</h1>
+<h2>Please enter a contact name to add:</h2>
 
-<h1>Phone book</h1>
-<h2>Add a contact here:</h2>
-  <form action="/contact" method="post">
-    <label for="name">Contact name:</label>
-    <input id="name" name="name" type="text">
+<form action="/contact" method="post">
+  <label for="name">Contact name:</label>
+  <input id="name" name="name" type="text">
+  <button name="submit" class="btn btn-danger">Add contact</button>
+</form>
 
-    <label for="number">Phone number:</label>
-    <input id="number" name="number" type="text">
-      <button name="submit" class="btn btn-danger">Add contact</button>
-  </form>
 
-  <form action="/clear"><button type="submit" class="btn btn-danger">Clear all Contacts</button>
-  </form>
+<h4>Here are your Contacts!</h4>
+<h5>Click on a contact to add a phone number</h5>
 
-  <h4>Here are your Contacts!</h4>
-  <h5>Click on a contact to view his/her phone number and to add another phone number for this contactcla!</h5>
+<ul>
+  <% @contacts.each() do |contact| %>
+  <li><a href="/contact/<%= contact.id() %>"><%= contact.name() %></a></li>
+  <% end %>
+</ul>
 
-    <ul>
-      <% @contacts.each() do |contact| %>
-        <li><a href="/contact/<%= contact.id() %>"><%= contact.name() %></a></li>
-      <% end %>
-    </ul>
+<form action="/clear"><button type="submit" class="btn btn-danger">Clear all Contacts</button>
+</form>

@@ -1,4 +1,22 @@
 <h1>Contact name: <%= @foundcontact.name() %></h1>
-<h1>Contact number: <%= @foundcontact.number() %></h1>
 
-<a href="/">Return to Main Contact page</a>
+<h2>Add a phone number here:</h2>
+
+<form action="/phone" method="post">
+  <input id='contact_id' name='contact_id' type='hidden' value='<%= @foundcontact.id() %>'>
+  <label for="type">Type (work, cell, etc.):</label>
+  <input id="type" name="type" type="text">
+  <label for="number">Phone number:</label>
+  <input id="number" name="number" type="text">
+  <button name="submit" class="btn btn-danger">Add Phone number</button>
+</form>
+
+<h4>Here is/are your phone number(s) for this contact:</h4>
+
+<ul>
+  <% @foundcontact.numbers().each() do |type_number| %>
+  <li> <%=type_number.type() %>: <%= type_number.number() %></li>
+  <% end %>
+</ul>
+
+<h4><a href="/">Return to Main Contact page</a></h4>

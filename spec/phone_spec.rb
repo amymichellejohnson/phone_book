@@ -3,9 +3,11 @@ require("phone")
 require("contact")
 
 describe("Phone") do
+
   before() do
     Phone.clear()
   end
+
   describe (".all") do
     it ("is empty at first") do
       expect(Phone.all()).to(eq([]))
@@ -13,7 +15,7 @@ describe("Phone") do
   end
 
   describe("#save") do
-    it ("adds a type and phone number to the array") do
+    it ("adds an object (type and phone number) to the array") do
       test_phone = Phone.new("Cell", 5034765356)
       test_phone.save()
       expect(Phone.all()).to(eq([test_phone]))
@@ -21,7 +23,7 @@ describe("Phone") do
   end
 
   describe(".clear") do
-    it ("clears all phone types and numbers from the array") do
+    it ("clears all objects from the array") do
       Phone.new("Cell", 5034765356).save()
       Phone.clear()
       expect(Phone.all()).to(eq([]))
@@ -29,7 +31,7 @@ describe("Phone") do
   end
 
   describe("#id") do
-    it ("returns unique id for each phone based on position in array") do
+    it ("returns unique id for each phone object based on its position in the array") do
       test_phone = Phone.new("Cell", 5034765356).save()
       test_phone2 = Phone.new("Home", 5032222222).save()
       expect(test_phone.id()).to(eq(1))
@@ -37,7 +39,7 @@ describe("Phone") do
   end
 
   describe(".find") do
-    it ("returns the phone by its id number") do
+    it ("returns the phone object by its id number") do
       test_phone = Phone.new("Cell", 5034765356).save()
       test_phone = Phone.new("Home", 5032222222).save()
       expect(Phone.find(test_phone.id())).to(eq(test_phone))

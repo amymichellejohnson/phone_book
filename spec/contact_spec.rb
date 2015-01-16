@@ -3,9 +3,11 @@ require("contact")
 require("phone")
 
 describe("Contact") do
+
   before() do
     Contact.clear()
   end
+  
   describe (".all") do
     it ("is empty at first") do
       expect(Contact.all()).to(eq([]))
