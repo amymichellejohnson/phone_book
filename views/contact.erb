@@ -19,4 +19,10 @@
   <% end %>
 </ul>
 
+<form action="/phone/clear" method="post">
+<input id='contact_id' name='contact_id' type='hidden' value='<%= @foundcontact.id() %>'>
+<button name="submit" class="btn btn-danger">Clear all numbers</button>
+</form>
+
+
 <h4><a href="/">Return to Main Contact page</a></h4>

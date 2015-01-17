@@ -32,6 +32,12 @@ get('/contact/:id') do
   erb(:contact)
 end
 
+post('/phone/clear') do
+  @foundcontact = Contact.find(params.fetch('contact_id').to_i())
+  @foundcontact.numbers.clear()
+  erb(:contact)
+end
+
 get('/clear') do
   @contacts = Contact.all()
   @contacts.clear()
